@@ -1,0 +1,8 @@
+# SpaceX
+A simple MVVM application, that gets data from the SpaceX API using retrofit and stores it into the local Room Database.
+Then the data is fetched from the Database and displayed on the UI. (This way the app will keep working without internet connection).
+A Work Manager checks for new updates every 24 hours, updates the database if there is new data and notifies the user with a notification.
+It is a single activity app with 4 fragments, built with Dependency Injection, Flows (transfering data between layers), LiveData (updating the UI) and Coroutines.
+
+
+![Screenshot 2022-07-28 113245](https://user-images.githubusercontent.com/100552525/181461422-58a02df7-6e20-48ff-833c-bc1a309c0f4f.png)
