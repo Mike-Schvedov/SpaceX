@@ -15,6 +15,7 @@ interface DataBaseRepository {
     suspend fun addLaunch(launch: Launch)
     suspend fun getAllLaunchesSorted(sortBy: SortingType, searchQuery: String): Flow<List<Launch>>
     suspend fun getLaunchesById(launchIds: List<String>) : Flow<List<Launch>>
+    suspend fun getAllLaunches(): Flow<List<Launch>>
   //  suspend fun getLaunchesByMatchingName(searchQuery:String) :  Flow<List<Launch>>
 
 }

@@ -33,7 +33,6 @@ class LaunchesViewModel @Inject constructor(
         viewModelScope.launch {
             contentMediator.getLaunchesFromDB(searchQuery, sortBy)
                 .collect {
-                    println("--------------TEST --------------- Collecting it : $it")
                     _listOfLaunches.postValue(it)
                 }
         }

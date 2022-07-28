@@ -20,7 +20,6 @@ class DataBaseRepositoryImpl @Inject constructor(
     override suspend fun getShipsByMatchingName(searchQuery: String): Flow<List<Ship>> =
         shipsDao.getShipsByMatchingName(searchQuery)
 
-
     // ---- Launch ---- //
     override suspend fun addLaunch(launch: Launch) = launchesDao.addLaunch(launch)
 
@@ -34,6 +33,6 @@ class DataBaseRepositoryImpl @Inject constructor(
     override suspend fun getLaunchesById(launchIds: List<String>) : Flow<List<Launch>> =
         launchesDao.getLaunchesByID(launchIds)
 
-  /*  override suspend fun getLaunchesByMatchingName(searchQuery: String): Flow<List<Launch>> =
-        launchesDao.getLaunchesByMatchingName(searchQuery)*/
+    override suspend fun getAllLaunches(): Flow<List<Launch>> = launchesDao.getAllLaunches()
+
 }

@@ -13,19 +13,16 @@ import javax.inject.Inject
 *  === How to use ===
 *  inject the liveInternetChecker into the MainActivity's ViewModel
 *  So make sure LiveInternetChecker has the @Inject constructor annotation (as we see here)
-* then create an observer : mainViewModel.liveInternetChecker.observe(this, {isNetworkAvailable ->
+* then create an observer in the main activity : mainViewModel.liveInternetChecker.observe(this, {isNetworkAvailable ->
 *   })
 * */
 // @Inject constructor(private val connectivityManager: ConnectivityManager)
-class LiveInternetChecker(context: Context) : LiveData<Boolean>()  {
-
-    private val connectivityManager = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+class LiveNetworkMonitor@Inject constructor(private val connectivityManager: ConnectivityManager) : LiveData<Boolean>()  {
 
     // We Create a network callback
     private lateinit var networkCallback: ConnectivityManager.NetworkCallback
     // A set of valid networks
     private val networksThatHaveInternet: MutableSet<Network> = HashSet()
-
     // If we have at least one valid network (with internet connection) send the LiveData boolean as True
     private fun checkIfOneNetworkHasInternet(){
         postValue(networksThatHaveInternet.size > 0)

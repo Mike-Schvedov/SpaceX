@@ -4,6 +4,7 @@ import com.mikeschvedov.spacex.data.database.entities.Launch
 import com.mikeschvedov.spacex.data.database.entities.Ship
 import com.mikeschvedov.spacex.data.database.repository.DataBaseRepository
 import com.mikeschvedov.spacex.data.network.ApiManager
+import com.mikeschvedov.spacex.models.network.launches.LaunchResponse
 import com.mikeschvedov.spacex.utils.helper_classes.Failure
 import com.mikeschvedov.spacex.utils.helper_classes.Logger
 import com.mikeschvedov.spacex.utils.enums.SortingType
@@ -141,7 +142,45 @@ class ContentMediatorImpl @Inject constructor(
     }
 
     // --- Checking If the Database has new data
-    override suspend fun checkIfNewLaunchesAvailable(): Boolean {
-        TODO("Not yet implemented")
+    override suspend fun checkIfNewLaunchesAvailable() = flow {
+
+        // Checking if the amount of launches in the DB is different than the amount we get from the API.
+        val apiSize = getAmountOfLaunchesFromAPI()
+        val dbSize = getAmountOfLaunchesInDB()
+
+        // If the amount is different return true(new launches available ),
+        // else return false (no new launches available)
+        val result = apiSize.combine(dbSize) { api, db ->
+            val thereIsDifference = (api != db)
+            if (thereIsDifference){
+                updateDBFromApi()
+            }
+           return@combine thereIsDifference
+        }
+
+       result.collect{
+           emit(it)
+       }
     }
+
+    private suspend fun getAmountOfLaunchesFromAPI() = flow {
+
+        // Getting All launches available from API
+        getLaunchesDataFromApi()
+            .flowOn(Dispatchers.IO)
+            .collect {
+                emit(it.size)
+            }
+    }
+
+    private suspend fun getAmountOfLaunchesInDB() = flow {
+
+        // Getting Launches from DB
+        dataBaseRepository.getAllLaunches()
+            .flowOn(Dispatchers.IO)
+            .collect {
+                emit(it.size)
+            }
+    }
+
 }

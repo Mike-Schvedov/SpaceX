@@ -34,4 +34,6 @@
     <string name="no">No</string>
     <string name="shipExtra">selectedShip</string>
     <string name="extraLaunch">selectedLaunch</string>
+    <string name="worker_already_exist">Worker already initialized, not need to create more than one</string>
+    <string name="is_worker_activated">isWorkerActivated</string>
 </resources>

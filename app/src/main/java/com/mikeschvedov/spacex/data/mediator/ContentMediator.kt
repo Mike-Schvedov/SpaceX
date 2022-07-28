@@ -26,6 +26,6 @@ interface ContentMediator {
     suspend fun  getLaunchesByIds(launchIds: List<String>): Flow<List<Launch>>
 
     // --- Checking If the Database has new data
-    suspend fun checkIfNewLaunchesAvailable() : Boolean
+    suspend fun checkIfNewLaunchesAvailable() : Flow<Boolean>
 
 }

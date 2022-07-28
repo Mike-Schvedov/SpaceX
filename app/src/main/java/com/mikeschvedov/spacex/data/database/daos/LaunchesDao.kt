@@ -27,4 +27,8 @@ interface LaunchesDao {
     // Get all Launches the match the id's in the list
     @Query("SELECT * FROM launch WHERE launchId IN (:launchIDs)")
     fun getLaunchesByID(launchIDs: List<String>) : Flow<List<Launch>>
+
+    @Query("SELECT * FROM launch")
+    fun getAllLaunches() : Flow<List<Launch>>
+
 }

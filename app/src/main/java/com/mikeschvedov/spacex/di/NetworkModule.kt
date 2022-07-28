@@ -38,7 +38,7 @@ object NetworkModule {
         loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient =
         OkHttpClient().newBuilder()
-            .addInterceptor(loggingInterceptor)
+            //.addInterceptor(loggingInterceptor)
            .build()
 
     //  ------------ SpaceXApi ------------ //

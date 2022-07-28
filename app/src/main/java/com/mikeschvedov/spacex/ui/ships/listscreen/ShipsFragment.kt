@@ -137,6 +137,7 @@ class ShipsFragment : Fragment() {
                     startDetailsFragment(ship)
                 }
         }
+
     }
 
     private fun startDetailsFragment(ship: Ship?) {

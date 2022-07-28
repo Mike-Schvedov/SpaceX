@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ShipsViewModel @Inject constructor(
     private val contentMediator: ContentMediator,
-    val networkStatusChecker: NetworkStatusChecker
+    val networkStatusChecker: NetworkStatusChecker,
 ) : ViewModel() {
 
     private val adapter = ShipsAdapter() { shipCallback ->
@@ -54,6 +54,7 @@ class ShipsViewModel @Inject constructor(
                 }
         }
     }
+
 
     fun getShipsAdapter(): ShipsAdapter {
         return adapter
