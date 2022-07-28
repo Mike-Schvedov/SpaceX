@@ -6,3 +6,9 @@ It is a single activity app with 4 fragments, built with Dependency Injection, F
 
 
 ![Screenshot 2022-07-28 113245](https://user-images.githubusercontent.com/100552525/181461422-58a02df7-6e20-48ff-833c-bc1a309c0f4f.png)
+
+
+![Screenshot 2022-07-28 121057](https://user-images.githubusercontent.com/100552525/181468382-68da0ecc-cdce-434a-bd03-b0d90b103370.png)
+
+
+![Screenshot 2022-07-28 130456](https://user-images.githubusercontent.com/100552525/181480548-0c8c94bb-d5bc-4bcf-9ea3-4f1a253cd9d9.png)
